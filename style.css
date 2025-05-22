@@ -91,7 +91,7 @@ section
     display: flex;
     align-items: center;
     padding: 0 9%;
-    background: url('home1.jpg') no-repeat;
+    background: url('https://github.com/enessendinc/enessendinc.github.io/blob/d816aa7fd952f10c6b0cfaed92eef95f3dfce6f3/home1.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
