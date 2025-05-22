@@ -733,7 +733,7 @@ span
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Mobil'de alt alta geçmesini sağlar */
     padding: 2rem 9%;
     background: var(--second-bg-color);
 }
@@ -929,13 +929,97 @@ section:nth-child(odd) .animate.scroll,
         transition-delay:.25s;
     }
 
-    .home-imgHover{
-        pointer-events: none;
-        background: var(--bg-color);
-        opacity: .6;
+    /* HOME SECTION - MOBİL İÇİN DÜZENLEMELER */
+    .home {
+        flex-direction: column; /* İçeriği dikey olarak sırala */
+        text-align: center; /* Metinleri ortaya hizala */
+        padding: 10rem 4% 5rem; /* Üstten daha fazla boşluk */
+        min-height: auto; /* Yüksekliği içeriğe bırak */
+    }
+
+    .home-content {
+        max-width: 100%; /* İçeriği tam genişliğe yay */
+        margin-top: 5rem; /* Resmi üstten ayır */
+    }
+
+    .home-content h1 {
+        font-size: 4rem; /* Başlığı küçült */
+    }
+
+    .home-content .text-animate {
+        width: auto; /* Genişliği otomatik ayarla */
+    }
+
+    .home-sci {
+        position: static; /* Pozisyonu statik yap (footer'ın üzerine gelmesin) */
+        width: 100%; /* Sosyal medya ikonlarını tam genişliğe yay */
+        display: flex;
+        justify-content: center; /* Ortaya hizala */
+        margin-top: 3rem; /* Üstten boşluk bırak */
+    }
+
+    /* Profil resmi için düzenlemeler */
+    .home-imgHover {
+        position: relative; /* Statik veya relative yap */
+        width: 80%; /* Resmin genişliğini ayarla */
+        max-width: 300px; /* Maksimum genişlik ver */
+        height: auto; /* Oranını koru */
+        margin-top: 3rem; /* İçerikle arasına boşluk bırak */
+        left: auto;
+        right: auto;
+        background: transparent; /* Arka planı kaldır */
+        opacity: 1; /* Opaklığı tam yap */
+    }
+
+    .home-imgHover::after { /* home-imgHover'ın sahte içeriğini kaldır */
+        content: none;
+    }
+
+    .home-imgHover img { /* Profil resminin kendisi için stil */
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 50%;
+        border: .2rem solid var(--main-color);
+    }
+
+    .home-imgHover:hover {
+        background: transparent;
+        opacity: 1;
+    }
+
+    .home .animate.home-img {
+        display: none;
+    }
+
+    .about .about-img .circle-spin {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* FOOTER DÜZENLEMELERİ */
+    .footer {
+        flex-direction: column; /* Alt alta sırala */
+        text-align: center; /* İçeriği ortaya hizala */
+        padding: 2rem 4%; /* Dikey boşlukları ayarla */
+    }
+
+    .footer-text {
+        order: 2; /* Copyright metnini ikonların altına al */
+        width: 100%; /* Tam genişlik */
+        margin-top: 2rem; /* Üstten boşluk bırak */
+    }
+
+    .footer-iconTop {
+        order: 1; /* İkonları üste al */
+        width: 100%; /* Tam genişlik */
+        margin-bottom: 2rem; /* Alttan boşluk bırak */
+        display: flex;
+        justify-content: center; /* Ortaya hizala */
     }
 }
 
+/* @media (max-width: 520px) bloğunu bulun ve aşağıdaki eklemeleri yapın */
 @media (max-width: 520px){
     html{
         font-size: 50%;
@@ -944,37 +1028,44 @@ section:nth-child(odd) .animate.scroll,
     .home-content h1 {
         display: flex;
         flex-direction: column;
+        font-size: 4rem; /* Daha da küçült */
+    }
+    .home-content .text-animate h3 {
+        font-size: 2.8rem; /* Daha da küçült */
     }
 
     .home-sci{
-        width: 160px;
+        width: 100%;
+        justify-content: center;
     }
 
     .home-sci a{
-        width: 38px;
-        height: 38px;
-    }
-}
-
-@media (max-width: 462px){
-    .home-content h1{
-        font-size: 5.2rem;
+        width: 42px; /* Sosyal ikon boyutunu ayarla */
+        height: 42px;
+        font-size: 24px;
+        margin: 0 1rem; /* Aralarına boşluk ver */
     }
 
     .education{
         padding: 10rem 4% 5rem 5%;
     }
+}
 
-    .footer{
-        flex-direction: column-reverse;
+/* @media (max-width: 462px) bloğunu bulun ve aşağıdaki eklemeleri yapın */
+@media (max-width: 462px){
+    .home-content h1{
+        font-size: 4rem; /* Daha da küçült */
+    }
+    .home-content .text-animate h3{
+        font-size: 2.5rem; /* Daha da küçült */
     }
 
-    .footer p{
-        margin-top: 2rem;
-        text-align: center;
+    .education{
+        padding: 10rem 4% 5rem 5%;
     }
 }
 
+/* @media (max-width: 371px) bloğunu bulun ve aşağıdaki eklemeleri yapın */
 @media (max-width: 371px){
     .home{
         justify-content: center;
@@ -988,7 +1079,14 @@ section:nth-child(odd) .animate.scroll,
     }
 
     .home-content h1{
-        font-size: 5rem;
+        font-size: 4rem; /* Daha da küçült */
+    }
+    .home-content .text-animate h3 {
+        font-size: 2.2rem; /* Daha da küçült */
+    }
+
+    .home-imgHover {
+        width: 100%; /* Çok küçük ekranlarda tam genişlik */
     }
 }
 
